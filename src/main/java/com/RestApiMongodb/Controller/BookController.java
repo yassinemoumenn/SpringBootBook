@@ -1,4 +1,4 @@
-package com.RestApiMongodbController;
+package com.RestApiMongodb.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.RestApiMongodbModel.Book;
-import com.RestApiMongodbRepository.BookRepository;
+import com.RestApiMongodb.Model.Book;
+import com.RestApiMongodb.Repository.BookRepository;
 
 @RestController
 public class BookController {

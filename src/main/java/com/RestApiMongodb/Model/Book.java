@@ -1,4 +1,4 @@
-package com.RestApiMongodbModel;
+package com.RestApiMongodb.Model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

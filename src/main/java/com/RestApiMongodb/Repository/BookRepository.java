@@ -1,8 +1,8 @@
-package com.RestApiMongodbRepository;
+package com.RestApiMongodb.Repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.RestApiMongodbModel.Book;
+import com.RestApiMongodb.Model.Book;
 
 public interface BookRepository extends MongoRepository<Book, Integer>{
 
