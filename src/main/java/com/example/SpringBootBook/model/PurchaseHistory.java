@@ -30,4 +30,45 @@ public class PurchaseHistory
 
     @Column(name = "purchase_time", nullable = false)
     private LocalDateTime purchaseTime;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Long getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(Long bookId) {
+		this.bookId = bookId;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public LocalDateTime getPurchaseTime() {
+		return purchaseTime;
+	}
+
+	public void setPurchaseTime(LocalDateTime purchaseTime) {
+		this.purchaseTime = purchaseTime;
+	}
+    
 }
