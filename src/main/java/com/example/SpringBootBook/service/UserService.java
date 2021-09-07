@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.SpringBootBook.model.Role;
 import com.example.SpringBootBook.model.User;
@@ -27,14 +28,17 @@ public class UserService implements IUserService{
 
 		        return userRepository.save(user);
 		    }
-	@Override
-	public Optional<User> findByUsername(String username) {
-		return null;
-	}
+	 @Override
+	    public Optional<User> findByUsername(String username)
+	    {
+	        return userRepository.findByUsername(username);
+	    }
 
-	@Override
-	public void makeAdmin(String username) {
-		
-	}
+	    @Override
+	    @Transactional //TransactionalRequired when executing an update/delete query.
+	    public void makeAdmin(String username)
+	    {
+	        userRepository.updateUserRole(username, Role.ADMIN);
+	    }
 
 }
