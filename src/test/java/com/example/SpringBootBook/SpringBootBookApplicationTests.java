@@ -1,10 +1,10 @@
-package com.RestApiMongodb;
+package com.example.SpringBootBook;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestApiMongodbApplicationTests {
+class SpringBootBookApplicationTests {
 
 	@Test
 	void contextLoads() {
