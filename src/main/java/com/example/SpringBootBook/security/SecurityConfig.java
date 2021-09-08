@@ -1,6 +1,9 @@
 package com.example.SpringBootBook.security;
 
+import javax.servlet.Filter;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,10 +14,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.example.SpringBootBook.model.Role;
+import com.example.SpringBootBook.security.jwt.JwtAuthorizationFilter;
 
 
 
@@ -28,6 +33,8 @@ import com.example.SpringBootBook.model.Role;
 @EnableWebSecurity
 public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 	
+	 @Value("${authentication.internal-api-key}")
+	    private String internalApiKey;
 
 
     @Autowired
@@ -53,10 +60,18 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 	               
 	                .anyRequest().authenticated();
 
-	      
+	      //jwt filter
+	        //internal > jwt > authentication
+//	        http.addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+//	                .addFilterBefore(internalApiAuthenticationFilter(), JwtAuthorizationFilter.class);
 	    }
 
-	 @Bean
+//	 @Bean
+//	    public InternalApiAuthenticationFilter internalApiAuthenticationFilter()
+//	    {
+//	        return new InternalApiAuthenticationFilter(internalApiKey);
+//	    }
+	@Bean
 	    public PasswordEncoder passwordEncoder()
 	    {
 	        return new BCryptPasswordEncoder();
@@ -72,12 +87,17 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 	            {
 	                registry.addMapping("/**")
 	                        .allowedOrigins("*")
-	                        .allowedMethods("*");
+	                        .allowedMethods("*"); 
 	            }
 	        };
 	    }
 	
-	
+	  @Bean
+	    public JwtAuthorizationFilter jwtAuthorizationFilter()
+	    {
+	        return new JwtAuthorizationFilter();
+	    }
+
 	
 
 }
