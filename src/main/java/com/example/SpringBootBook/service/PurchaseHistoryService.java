@@ -10,9 +10,6 @@ import com.example.SpringBootBook.repository.IPurchaseHistoryRepository;
 import com.example.SpringBootBook.repository.projection.IPurchaseItem;
 import com.example.SpringBootBook.service.Impl.IPurchaseHistoryService;
 
-
-
-
 @Service
 public class PurchaseHistoryService implements IPurchaseHistoryService {
 	
