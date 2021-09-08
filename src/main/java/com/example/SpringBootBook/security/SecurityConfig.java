@@ -22,13 +22,6 @@ import com.example.SpringBootBook.model.Role;
 import com.example.SpringBootBook.security.jwt.JwtAuthorizationFilter;
 
 
-
-
-
-
-
-
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig  extends WebSecurityConfigurerAdapter{
@@ -62,15 +55,15 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 
 	      //jwt filter
 	        //internal > jwt > authentication
-//	        http.addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-//	                .addFilterBefore(internalApiAuthenticationFilter(), JwtAuthorizationFilter.class);
+	        http.addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+	                .addFilterBefore(internalApiAuthenticationFilter(), JwtAuthorizationFilter.class);
 	    }
 
-//	 @Bean
-//	    public InternalApiAuthenticationFilter internalApiAuthenticationFilter()
-//	    {
-//	        return new InternalApiAuthenticationFilter(internalApiKey);
-//	    }
+	 @Bean
+	    public InternalApiAuthenticationFilter internalApiAuthenticationFilter()
+	    {
+	        return new InternalApiAuthenticationFilter(internalApiKey);
+	    }
 	@Bean
 	    public PasswordEncoder passwordEncoder()
 	    {
